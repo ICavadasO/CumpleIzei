@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Presentación en Video</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #miVideo {
+            width: 100%;
+            height: 100vh;
+            object-fit: contain;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <video id="miVideo" controls autoplay>
+        <source src="Nahia.mp4" type="video/mp4">
+        Tu navegador no soporta el formato de video.
+    </video>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.getElementById('miVideo');
+            
+            // Intenta reproducir y poner en pantalla completa cuando se cargue
+            video.play().then(function() {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+            }).catch(function(error) {
+                console.log("Error al intentar reproducir:", error);
+            });
+        });
+    </script>
+</body>
+</html>
